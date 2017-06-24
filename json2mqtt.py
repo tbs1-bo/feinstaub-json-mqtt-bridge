@@ -1,13 +1,13 @@
 import paho.mqtt.client as mqtt
 import bottle
 import logging
-import time
+import datetime
 
 # TODO install as service
 
-MQTT_HOST = "localhost"
+MQTT_HOST = "iot.eclipse.org"  # "localhost"
 MQTT_TOPIC = "feinstaub/ebike/"
-
+CLIENT = mqtt.Client()
 
 @bottle.post("/feinstaub/json2mqtt")
 def route_feinstaub_json2mqtt():
@@ -15,31 +15,24 @@ def route_feinstaub_json2mqtt():
     json_req = bottle.request.json
     logging.debug("json req received %s", json_req)
 
-    # send json data to mqtt
-    client = mqtt.Client()    
-    client.loop_start()
-    client.connect(MQTT_HOST)  # connecting with default port 1883
-
-    publish(json_req, client, MQTT_TOPIC)
-    publish({"last_update":time.time()}, client, MQTT_TOPIC)
-    # client.publish(MQTT_TOPIC+"last_update", payload=time.time(), retain=True)
-    client.loop_stop()
-    client.disconnect()
+    publish(json_req, MQTT_TOPIC)
+    now = str(datetime.datetime.now())
+    publish({"last_update": now}, MQTT_TOPIC)
 
 
-def publish(json, client, topic_prefix):
+def publish(json, topic_prefix):
     for k in json:
         val = json[k]
 
         if type(val) is list:
-            publish(dict(enumerate(val)), client, topic_prefix + str(k) + "/")
+            publish(dict(enumerate(val)), topic_prefix + str(k) + "/")
         elif type(val) is dict:
-            publish(val, client, topic_prefix + str(k) + "/")
+            publish(val, topic_prefix + str(k) + "/")
         else:
             t = topic_prefix + str(k)
-            logging.debug("publishing to broker: '%s' '%s'", t, val)
-            client.publish(topic=t, payload=val, retain=True)
-    
+            logging.debug("publishing to broker: '%s' '%s'", t, str(val))
+            CLIENT.publish(topic=t, payload=val, retain=True)
+
 
 @bottle.get("/feinstaub")
 def route_index():
@@ -49,5 +42,9 @@ def route_index():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    bottle.run(host="0.0.0.0", port=8080, reloader=True)
 
+    logging.debug("connecing to mqtt broker %s", MQTT_HOST)
+    CLIENT.connect(MQTT_HOST)
+    CLIENT.loop_start()
+
+    bottle.run(host="0.0.0.0", port=8080, reloader=True)
