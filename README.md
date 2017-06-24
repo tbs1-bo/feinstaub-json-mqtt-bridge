@@ -20,7 +20,7 @@ Connection: close
 Installation
 ------------
 
-    pip install bottle paho.mqtt
+    pip install -r requirements.txt
 
 To test the service you can post a sample request from the repo.
 
