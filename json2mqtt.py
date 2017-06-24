@@ -5,7 +5,7 @@ import datetime
 
 # TODO install as service
 
-MQTT_HOST = "iot.eclipse.org"  # "localhost"
+MQTT_HOST = "localhost"
 MQTT_TOPIC = "feinstaub/ebike/"
 CLIENT = mqtt.Client()
 
