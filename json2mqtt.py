@@ -40,11 +40,14 @@ def route_index():
     pass
 
 
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
-
-    logging.debug("connecing to mqtt broker %s", MQTT_HOST)
+def main():
+    print("starting")
+    logging.debug("connecting to mqtt broker %s", MQTT_HOST)
     CLIENT.connect(MQTT_HOST)
     CLIENT.loop_start()
 
     bottle.run(host="0.0.0.0", port=8080, reloader=True)
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
+    main()
