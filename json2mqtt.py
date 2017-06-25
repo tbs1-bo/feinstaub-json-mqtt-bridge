@@ -4,10 +4,12 @@ import logging
 import datetime
 
 # TODO install as service
+# TODO convert to WSGI app
 
 MQTT_HOST = "localhost"
 MQTT_TOPIC = "feinstaub/ebike/"
 CLIENT = mqtt.Client()
+
 
 @bottle.post("/feinstaub/json2mqtt")
 def route_feinstaub_json2mqtt():
