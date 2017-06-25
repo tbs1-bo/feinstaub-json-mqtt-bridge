@@ -1,8 +1,8 @@
 Feinstaub Bridge
 ================
 
-Receive data via post request and send them to an MQTT broker. A Post
-request is of the following form.
+Data received as JSON via an HTTP POST request is send over to an MQTT
+broker. A POST request is of the following form.
 
 ````
 POST / HTTP/1.1
@@ -20,8 +20,15 @@ Connection: close
 Installation
 ------------
 
+After checkout, use pip to install some requirements.
+
     pip install -r requirements.txt
 
-To test the service you can post a sample request from the repo.
+No it can be started
+
+    python json2mqtt.py
+
+To test the service you can now post a sample request found in the
+repo.
 
     curl -d @sample_post.txt -H 'Content-Type: application/json' localhost:8080/feinstaub/json2mqtt
