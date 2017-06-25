@@ -17,7 +17,8 @@ def route_feinstaub_json2mqtt():
 
     publish(json_req, MQTT_TOPIC)
     now = str(datetime.datetime.now())
-    publish({"last_update": now}, MQTT_TOPIC)
+    publish({"stats/last_update": now,
+             "stats/interval": 120}, MQTT_TOPIC)
 
 
 def publish(json, topic_prefix):
