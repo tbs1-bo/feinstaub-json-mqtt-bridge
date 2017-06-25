@@ -6,12 +6,15 @@ import datetime
 # TODO install as service
 # TODO convert to WSGI app
 
+HTTP_PORT = 8080
 MQTT_HOST = "localhost"
 MQTT_TOPIC = "feinstaub/ebike/"
 CLIENT = mqtt.Client()
 
+application = bottle.default_app()
 
-@bottle.post("/feinstaub/json2mqtt")
+
+@application.post("/feinstaub/json2mqtt")
 def route_feinstaub_json2mqtt():
     # take the json and parse it
     json_req = bottle.request.json
@@ -37,20 +40,23 @@ def publish(json, topic_prefix):
             CLIENT.publish(topic=t, payload=val, retain=True)
 
 
-@bottle.get("/feinstaub")
+@application.get("/feinstaub")
 def route_index():
     # return page with current values
     pass
 
 
-def main():
-    print("starting")
+def setup():
     logging.debug("connecting to mqtt broker %s", MQTT_HOST)
     CLIENT.connect(MQTT_HOST)
     CLIENT.loop_start()
 
-    bottle.run(host="0.0.0.0", port=8080, reloader=True)
+
+def run_server():
+    bottle.run(app=application,
+               host="0.0.0.0", port=HTTP_PORT, reloader=True)
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    main()
+    setup()
+    run_server()
