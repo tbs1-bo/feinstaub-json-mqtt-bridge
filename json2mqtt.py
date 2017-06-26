@@ -5,6 +5,7 @@ import datetime
 
 # TODO install as service
 # TODO convert to WSGI app
+# TODO separate routes and logic
 
 HTTP_PORT = 8080
 MQTT_HOST = "localhost"
