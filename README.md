@@ -2,7 +2,8 @@ Feinstaub Bridge
 ================
 
 Data received as JSON via an HTTP POST request is send over to an MQTT
-broker. A POST request is of the following form.
+broker. A sample POST request originating from a http://luftdaten.info/ 
+sensor is of the following form.
 
 ````
 POST / HTTP/1.1
