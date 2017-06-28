@@ -33,3 +33,8 @@ To test the service you can now post a sample request found in the
 repo.
 
     curl -d @sample_post.txt -H 'Content-Type: application/json' localhost:8080/feinstaub/json2mqtt
+
+TODO
+----
+
+- add ansible deployment playbook
