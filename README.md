@@ -21,20 +21,15 @@ Connection: close
 Installation
 ------------
 
-After checkout, use pip to install some requirements.
+Ansible can be used to install this tool as a service.
 
-    pip install -r requirements.txt
-
-No it can be started
-
-    python json2mqtt.py
+    $ ansible-playbook -K playbook-deploy.yml
+    
+The tool will be installed as daemontools service. Option ``-K`` asks for the 
+sudo-Passwort - only needed if daemontools must be installed.
 
 To test the service you can now post a sample request found in the
 repo.
 
     curl -d @sample_post.txt -H 'Content-Type: application/json' localhost:8080/feinstaub/json2mqtt
 
-TODO
-----
-
-- add ansible deployment playbook
