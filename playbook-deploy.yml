@@ -10,6 +10,7 @@
     git:
       repo: 'https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge.git'
       dest: '{{ repo_dest }}'
+      version: master
 
   - name: install dependencies from requirements file in repo
     pip:
