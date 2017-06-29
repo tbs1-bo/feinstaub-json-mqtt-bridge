@@ -1,0 +1,19 @@
+---
+- hosts: luftsensor_deploy
+  vars:
+    repo_dest: /home/administrator/proj/feinstaub-json-mqtt-bridge
+    python_venv: /home/administrator/proj/feinstaub-json-mqtt-bridge-ve
+
+  tasks:
+  
+  - name: update/checkout git repo
+    git:
+      repo: 'https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge.git'
+      dest: '{{ repo_dest }}'
+
+  - name: install dependencies from requirements file in repo
+    pip:
+      requirements: '{{ repo_dest }}/requirements.txt'
+      virtualenv: '{{ python_venv }}'
+      virtualenv_python: python3
+            
