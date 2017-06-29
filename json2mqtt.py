@@ -3,9 +3,6 @@ import bottle
 import logging
 import datetime
 
-# TODO install as a service using daemontools
-# https://wiki.uberspace.de/system:daemontools
-
 # TODO separate routes and logic
 
 HTTP_PORT = 8080
