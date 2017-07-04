@@ -2,8 +2,7 @@
 - hosts: luftsensor_deploy
   vars:
     repo_dest: /home/administrator/proj/feinstaub-json-mqtt-bridge
-    # TODO put venv dir into repo
-    python_venv: /home/administrator/proj/feinstaub-json-mqtt-bridge-ve
+    python_venv: '{{ repo_dest }}/venv'
 
   tasks:
   
