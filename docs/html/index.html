@@ -38,45 +38,45 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="feinstaub-bridge">
-<h1>Feinstaub Bridge<a class="headerlink" href="#feinstaub-bridge" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="toctree-wrapper compound">
 </div>
+<div class="section" id="feinstaub-bridge">
+<h1>Feinstaub Bridge<a class="headerlink" href="#feinstaub-bridge" title="Permalink to this headline">¶</a></h1>
 <p>Data received as JSON via an HTTP POST request is send over to an MQTT
 broker. A sample POST request originating from a
 <a class="reference external" href="http://luftdaten.info/">luftdaten.info</a>
 sensor is of the following form.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">223.215</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Authorization</span><span class="p">:</span> <span class="n">Basic</span>
-<span class="n">X</span><span class="o">-</span><span class="n">PIN</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">X</span><span class="o">-</span><span class="n">Sensor</span><span class="p">:</span> <span class="n">esp8266</span><span class="o">-</span><span class="mi">3394227</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">412</span>
-<span class="n">Connection</span><span class="p">:</span> <span class="n">close</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="mf">192.168.223.215</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="nx">Authorization</span><span class="o">:</span> <span class="nx">Basic</span>
+<span class="nx">X</span><span class="o">-</span><span class="nx">PIN</span><span class="o">:</span> <span class="mi">0</span>
+<span class="nx">X</span><span class="o">-</span><span class="nx">Sensor</span><span class="o">:</span> <span class="nx">esp8266</span><span class="o">-</span><span class="mi">3394227</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="o">:</span> <span class="mi">412</span>
+<span class="nx">Connection</span><span class="o">:</span> <span class="nx">close</span>
 
-<span class="p">{</span><span class="s2">&quot;esp8266id&quot;</span><span class="p">:</span> <span class="s2">&quot;3394227&quot;</span><span class="p">,</span> <span class="s2">&quot;software_version&quot;</span><span class="p">:</span> <span class="s2">&quot;NRZ-2017-090&quot;</span><span class="p">,</span>
- <span class="s2">&quot;sensordatavalues&quot;</span><span class="p">:[{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;SDS_P1&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;4.30&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;SDS_P2&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;3.53&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;20.80&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;humidity&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;52.30&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;samples&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;670215&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;min_micro&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;205&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;max_micro&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;505594&quot;</span><span class="p">},</span>
-                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;-82&quot;</span><span class="p">}]}</span>
+<span class="p">{</span><span class="s2">&quot;esp8266id&quot;</span><span class="o">:</span> <span class="s2">&quot;3394227&quot;</span><span class="p">,</span> <span class="s2">&quot;software_version&quot;</span><span class="o">:</span> <span class="s2">&quot;NRZ-2017-090&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;sensordatavalues&quot;</span><span class="o">:</span><span class="p">[{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;SDS_P1&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;4.30&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;SDS_P2&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;3.53&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;20.80&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;humidity&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;52.30&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;samples&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;670215&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;min_micro&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;205&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;max_micro&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;505594&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="o">:</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;-82&quot;</span><span class="p">}]}</span>
 </pre></div>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Ansible can be used to install this tool as a service.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ansible-playbook -K playbook-deploy.yml
+<p>Ansible can be used to install this tool as a service.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ansible-playbook -K playbook-deploy.yml
 </pre></div>
 </div>
 <p>The tool will be installed as daemontools service. Option <code class="docutils literal"><span class="pre">-K</span></code> asks for the
 sudo-Passwort - only needed if daemontools must be installed.</p>
 <p>To test the service you can now post a sample request found in the
-repo.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">d</span> <span class="nd">@sample_post</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">feinstaub</span><span class="o">/</span><span class="n">json2mqtt</span>
+repo.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -d @sample_post.txt -H <span class="s1">&#39;Content-Type: application/json&#39;</span> localhost:8080/feinstaub/json2mqtt
 </pre></div>
 </div>
 </div>
@@ -93,7 +93,10 @@ is launched and it is connected to a logging service afterwards. Logs are placed
 <div class="section" id="api-doc">
 <h1>API-Doc<a class="headerlink" href="#api-doc" title="Permalink to this headline">¶</a></h1>
 <p>The bottle-Server is configured and run in the following module.</p>
-<span class="target" id="module-json2mqtt.run"></span><p>The default HTTP-Port</p>
+<div class="section" id="module-json2mqtt.run">
+<span id="json2mqtt"></span><h2>json2mqtt<a class="headerlink" href="#module-json2mqtt.run" title="Permalink to this headline">¶</a></h2>
+<p>This module runs a bottle webserver and listens for a post request that
+contains a JSON payload which will be transmitted over to an MQTT broker.</p>
 <dl class="function">
 <dt id="json2mqtt.run.publish">
 <code class="descclassname">json2mqtt.run.</code><code class="descname">publish</code><span class="sig-paren">(</span><em>json: str</em>, <em>topic_prefix: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#publish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.publish" title="Permalink to this definition">¶</a></dt>
@@ -118,6 +121,7 @@ is launched and it is connected to a logging service afterwards. Logs are placed
 <dd><p>Setup the MQTT-Client.</p>
 </dd></dl>
 
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>

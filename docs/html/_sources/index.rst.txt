@@ -3,19 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Table of Contents:
+
+
 Feinstaub Bridge
 ================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
 Data received as JSON via an HTTP POST request is send over to an MQTT
 broker. A sample POST request originating from a
 `luftdaten.info <http://luftdaten.info/>`_
 sensor is of the following form.
 
-::
+.. code-block:: javascript
 
   POST / HTTP/1.1
   Host: 192.168.223.215
@@ -40,7 +42,9 @@ sensor is of the following form.
 Installation
 ------------
 
-Ansible can be used to install this tool as a service.::
+Ansible can be used to install this tool as a service.
+
+.. code-block:: bash
 
     $ ansible-playbook -K playbook-deploy.yml
 
@@ -48,7 +52,9 @@ The tool will be installed as daemontools service. Option ``-K`` asks for the
 sudo-Passwort - only needed if daemontools must be installed.
 
 To test the service you can now post a sample request found in the
-repo.::
+repo.
+
+.. code-block:: bash
 
     curl -d @sample_post.txt -H 'Content-Type: application/json' localhost:8080/feinstaub/json2mqtt
 
@@ -66,6 +72,9 @@ API-Doc
 =======
 
 The bottle-Server is configured and run in the following module.
+
+json2mqtt
+---------
 
 .. automodule:: json2mqtt.run
    :members:
