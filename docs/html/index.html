@@ -72,6 +72,8 @@ sensor is of the following form.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ ansible-playbook -K playbook-deploy.yml
 </pre></div>
 </div>
+<p>Look into the <a class="reference external" href="https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/playbook-deploy.yml">playbook-deploy.yaml-file</a>
+to get more details about the deployment process.</p>
 <p>The tool will be installed as daemontools service. Option <code class="docutils literal"><span class="pre">-K</span></code> asks for the
 sudo-Passwort - only needed if daemontools must be installed.</p>
 <p>To test the service you can now post a sample request found in the
@@ -99,7 +101,7 @@ is launched and it is connected to a logging service afterwards. Logs are placed
 contains a JSON payload which will be transmitted over to an MQTT broker.</p>
 <dl class="function">
 <dt id="json2mqtt.run.publish">
-<code class="descclassname">json2mqtt.run.</code><code class="descname">publish</code><span class="sig-paren">(</span><em>json: str</em>, <em>topic_prefix: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#publish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.publish" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">json2mqtt.run.</code><code class="descname">publish</code><span class="sig-paren">(</span><em>json: dict</em>, <em>topic_prefix: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#publish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.publish" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take a JSON document and publish it to a given MQTT topic prefix.</p>
 </dd></dl>
 
@@ -119,6 +121,8 @@ contains a JSON payload which will be transmitted over to an MQTT broker.</p>
 <dt id="json2mqtt.run.setup">
 <code class="descclassname">json2mqtt.run.</code><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup the MQTT-Client.</p>
+<p>If there is an HTTP_PORT environment variable, this will be used as
+value.</p>
 </dd></dl>
 
 </div>

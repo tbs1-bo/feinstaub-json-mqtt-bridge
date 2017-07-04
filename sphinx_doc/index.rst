@@ -48,6 +48,10 @@ Ansible can be used to install this tool as a service.
 
     $ ansible-playbook -K playbook-deploy.yml
 
+Look into the `playbook-deploy.yaml-file
+<https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/playbook-deploy.yml>`_
+to get more details about the deployment process.
+
 The tool will be installed as daemontools service. Option ``-K`` asks for the
 sudo-Passwort - only needed if daemontools must be installed.
 
