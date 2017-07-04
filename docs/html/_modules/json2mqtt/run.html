@@ -71,7 +71,7 @@
              <span class="s2">&quot;stats/interval&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="n">MQTT_TOPIC</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="publish"><a class="viewcode-back" href="../../index.html#json2mqtt.run.publish">[docs]</a><span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="n">json</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">topic_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="publish"><a class="viewcode-back" href="../../index.html#json2mqtt.run.publish">[docs]</a><span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="n">json</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">topic_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Take a JSON document and publish it to a given MQTT topic prefix.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">json</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
@@ -93,7 +93,10 @@
 
 
 <div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../index.html#json2mqtt.run.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Setup the MQTT-Client.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Setup the MQTT-Client.</span>
+
+<span class="sd">    If there is an HTTP_PORT environment variable, this will be used as</span>
+<span class="sd">    value.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="s2">&quot;HTTP_PORT&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
         <span class="k">global</span> <span class="n">HTTP_PORT</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;using http port from env var HTTP_PORT&quot;</span><span class="p">)</span>
