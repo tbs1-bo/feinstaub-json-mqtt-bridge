@@ -30,7 +30,7 @@ def route_feinstaub_json2mqtt():
              "stats/interval": 120}, MQTT_TOPIC)
 
 
-def publish(json: str, topic_prefix: str):
+def publish(json: dict, topic_prefix: str):
     """Take a JSON document and publish it to a given MQTT topic prefix."""
     for k in json:
         val = json[k]
@@ -52,7 +52,10 @@ def route_index():
 
 
 def setup():
-    """Setup the MQTT-Client."""
+    """Setup the MQTT-Client.
+
+    If there is an HTTP_PORT environment variable, this will be used as
+    value."""
     if "HTTP_PORT" in os.environ:
         global HTTP_PORT
         logging.debug("using http port from env var HTTP_PORT")
