@@ -1,4 +1,5 @@
-"""The default HTTP-Port"""
+"""This module runs a bottle webserver and listens for a post request that
+contains a JSON payload which will be transmitted over to an MQTT broker."""
 
 import paho.mqtt.client as mqtt
 import bottle
