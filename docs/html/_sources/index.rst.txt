@@ -13,7 +13,9 @@ Feinstaub Bridge
 Data received as JSON via an HTTP POST request is send over to an MQTT
 broker. A sample POST request originating from a
 `luftdaten.info <http://luftdaten.info/>`_
-sensor is of the following form.::
+sensor is of the following form.
+
+::
 
   POST / HTTP/1.1
   Host: 192.168.223.215
