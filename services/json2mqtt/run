@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # -u unbuffered output
-exec ../../../feinstaub-json-mqtt-bridge-ve/bin/python -u ../../json2mqtt.py 2>&1
+exec ../../../feinstaub-json-mqtt-bridge-ve/bin/python -u ../../json2mqtt/run.py 2>&1

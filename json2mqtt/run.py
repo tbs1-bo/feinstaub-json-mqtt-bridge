@@ -1,3 +1,5 @@
+"""The default HTTP-Port"""
+
 import paho.mqtt.client as mqtt
 import bottle
 import logging
@@ -16,6 +18,7 @@ application = bottle.default_app()
 
 @application.post("/feinstaub/json2mqtt")
 def route_feinstaub_json2mqtt():
+    """The default route that is listening to post requests."""
     # take the json and parse it
     json_req = bottle.request.json
     logging.debug("json req received %s", json_req)
@@ -26,7 +29,8 @@ def route_feinstaub_json2mqtt():
              "stats/interval": 120}, MQTT_TOPIC)
 
 
-def publish(json, topic_prefix):
+def publish(json: str, topic_prefix: str):
+    """Take a JSON document and publish it to a given MQTT topic prefix."""
     for k in json:
         val = json[k]
 
@@ -47,6 +51,7 @@ def route_index():
 
 
 def setup():
+    """Setup the MQTT-Client."""
     if "HTTP_PORT" in os.environ:
         global HTTP_PORT
         logging.debug("using http port from env var HTTP_PORT")
@@ -58,6 +63,7 @@ def setup():
 
 
 def run_server():
+    """Run the bottle-server on the configured http-port."""
     bottle.run(app=application,
                host="0.0.0.0", port=HTTP_PORT, reloader=True)
 

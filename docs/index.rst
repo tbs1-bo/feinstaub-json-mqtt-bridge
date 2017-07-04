@@ -10,7 +10,6 @@ Feinstaub Bridge
    :maxdepth: 2
    :caption: Contents:
 
-
 Data received as JSON via an HTTP POST request is send over to an MQTT
 broker. A sample POST request originating from a http://luftdaten.info/
 sensor is of the following form.::
@@ -31,7 +30,8 @@ sensor is of the following form.::
                        {"value_type":"humidity","value":"52.30"},
                        {"value_type":"samples","value":"670215"},
                        {"value_type":"min_micro","value":"205"},
-                       {"value_type":"max_micro","value":"505594"},{"value_type":"signal","value":"-82"}]}
+                       {"value_type":"max_micro","value":"505594"},
+                       {"value_type":"signal","value":"-82"}]}
 
 
 Installation
@@ -58,6 +58,16 @@ The folder ``services`` contains services controlled by the
 Navigate into this folder and run ``svscan``. After this the json2mqtt-Service
 is launched and it is connected to a logging service afterwards. Logs are placed in
 ``json2mqtt/log/main``.
+
+API-Doc
+=======
+
+The bottle-Server is configured and run in the following module.
+
+.. automodule:: json2mqtt.run
+   :members:
+
+
 
 Indices and tables
 ==================
