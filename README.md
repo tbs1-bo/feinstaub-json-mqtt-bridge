@@ -1,6 +1,6 @@
 Feinstaub Bridge
 ================
 
-Documentatio moved to 
+Documentation moved to 
 https://tbs1-bo.github.io/feinstaub-json-mqtt-bridge/html/
 
