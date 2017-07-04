@@ -1,1 +1,185 @@
-../sphinx_doc/_build/html/index.html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Feinstaub Bridge &#8212; json2mqtt  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="feinstaub-bridge">
+<h1>Feinstaub Bridge<a class="headerlink" href="#feinstaub-bridge" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Data received as JSON via an HTTP POST request is send over to an MQTT
+broker. A sample POST request originating from a
+<a class="reference external" href="http://luftdaten.info/">luftdaten.info</a>
+sensor is of the following form.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">223.215</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Authorization</span><span class="p">:</span> <span class="n">Basic</span>
+<span class="n">X</span><span class="o">-</span><span class="n">PIN</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Sensor</span><span class="p">:</span> <span class="n">esp8266</span><span class="o">-</span><span class="mi">3394227</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">412</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">close</span>
+
+<span class="p">{</span><span class="s2">&quot;esp8266id&quot;</span><span class="p">:</span> <span class="s2">&quot;3394227&quot;</span><span class="p">,</span> <span class="s2">&quot;software_version&quot;</span><span class="p">:</span> <span class="s2">&quot;NRZ-2017-090&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;sensordatavalues&quot;</span><span class="p">:[{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;SDS_P1&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;4.30&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;SDS_P2&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;3.53&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;20.80&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;humidity&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;52.30&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;samples&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;670215&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;min_micro&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;205&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;max_micro&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;505594&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;value_type&quot;</span><span class="p">:</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;-82&quot;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Ansible can be used to install this tool as a service.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ansible-playbook -K playbook-deploy.yml
+</pre></div>
+</div>
+<p>The tool will be installed as daemontools service. Option <code class="docutils literal"><span class="pre">-K</span></code> asks for the
+sudo-Passwort - only needed if daemontools must be installed.</p>
+<p>To test the service you can now post a sample request found in the
+repo.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">d</span> <span class="nd">@sample_post</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">feinstaub</span><span class="o">/</span><span class="n">json2mqtt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="daemontools-services">
+<h2>daemontools services<a class="headerlink" href="#daemontools-services" title="Permalink to this headline">¶</a></h2>
+<p>The folder <code class="docutils literal"><span class="pre">services</span></code> contains services controlled by the
+<a class="reference external" href="https://cr.yp.to/daemontools.html">daemontools</a>
+(<a class="reference external" href="https://wiki.uberspace.de/system:daemontools">german documentation</a>).
+Navigate into this folder and run <code class="docutils literal"><span class="pre">svscan</span></code>. After this the json2mqtt-Service
+is launched and it is connected to a logging service afterwards. Logs are placed in
+<code class="docutils literal"><span class="pre">json2mqtt/log/main</span></code>.</p>
+</div>
+</div>
+<div class="section" id="api-doc">
+<h1>API-Doc<a class="headerlink" href="#api-doc" title="Permalink to this headline">¶</a></h1>
+<p>The bottle-Server is configured and run in the following module.</p>
+<span class="target" id="module-json2mqtt.run"></span><p>The default HTTP-Port</p>
+<dl class="function">
+<dt id="json2mqtt.run.publish">
+<code class="descclassname">json2mqtt.run.</code><code class="descname">publish</code><span class="sig-paren">(</span><em>json: str</em>, <em>topic_prefix: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#publish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a JSON document and publish it to a given MQTT topic prefix.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="json2mqtt.run.route_feinstaub_json2mqtt">
+<code class="descclassname">json2mqtt.run.</code><code class="descname">route_feinstaub_json2mqtt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#route_feinstaub_json2mqtt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.route_feinstaub_json2mqtt" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default route that is listening to post requests.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="json2mqtt.run.run_server">
+<code class="descclassname">json2mqtt.run.</code><code class="descname">run_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#run_server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.run_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the bottle-server on the configured http-port.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="json2mqtt.run.setup">
+<code class="descclassname">json2mqtt.run.</code><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/json2mqtt/run.html#setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#json2mqtt.run.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup the MQTT-Client.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">json2mqtt</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Marco Bakera.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
