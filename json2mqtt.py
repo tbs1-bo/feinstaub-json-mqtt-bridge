@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import bottle
 import logging
 import datetime
+import os
 
 # TODO separate routes and logic
 
@@ -46,6 +47,11 @@ def route_index():
 
 
 def setup():
+    if "HTTP_PORT" in os.environ:
+        global HTTP_PORT
+        logging.debug("using http port from env var HTTP_PORT")
+        HTTP_PORT = os.environ["HTTP_PORT"]
+
     logging.debug("connecting to mqtt broker %s", MQTT_HOST)
     CLIENT.connect(MQTT_HOST)
     CLIENT.loop_start()
