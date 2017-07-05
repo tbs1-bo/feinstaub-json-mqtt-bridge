@@ -83,7 +83,11 @@ json2mqtt
 .. automodule:: json2mqtt.run
    :members:
 
+Links
+=====
 
+- Visit the project at `github
+  <https://www.github.com/tbs1-bo/feinstaub-json-mqtt-bridge>`_.
 
 Indices and tables
 ==================
