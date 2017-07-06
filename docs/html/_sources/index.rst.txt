@@ -56,7 +56,9 @@ The tool will be installed as daemontools service. Option ``-K`` asks for the
 sudo-Passwort - only needed if daemontools must be installed.
 
 To test the service you can now post a sample request found in the file
-``sample_post.txt`` in the repo.
+`sample_post.txt
+<https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/sample_post.txt>`_
+in the repo.
 
 .. code-block:: bash
 

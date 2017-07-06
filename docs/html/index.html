@@ -77,7 +77,8 @@ to get more details about the deployment process.</p>
 <p>The tool will be installed as daemontools service. Option <code class="docutils literal"><span class="pre">-K</span></code> asks for the
 sudo-Passwort - only needed if daemontools must be installed.</p>
 <p>To test the service you can now post a sample request found in the file
-<code class="docutils literal"><span class="pre">sample_post.txt</span></code> in the repo.</p>
+<a class="reference external" href="https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/sample_post.txt">sample_post.txt</a>
+in the repo.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -d @sample_post.txt -H <span class="s1">&#39;Content-Type: application/json&#39;</span> localhost:8080/feinstaub/json2mqtt
 </pre></div>
 </div>
