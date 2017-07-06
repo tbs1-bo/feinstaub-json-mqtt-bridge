@@ -55,8 +55,8 @@ to get more details about the deployment process.
 The tool will be installed as daemontools service. Option ``-K`` asks for the
 sudo-Passwort - only needed if daemontools must be installed.
 
-To test the service you can now post a sample request found in the
-repo.
+To test the service you can now post a sample request found in the file
+``sample_post.txt`` in the repo.
 
 .. code-block:: bash
 
