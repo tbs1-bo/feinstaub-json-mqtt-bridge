@@ -74,7 +74,7 @@ sensor is of the following form.</p>
 </div>
 <p>Look into the <a class="reference external" href="https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/playbook-deploy.yml">playbook-deploy.yaml-file</a>
 to get more details about the deployment process.</p>
-<p>The tool will be installed as daemontools service. Option <code class="docutils literal"><span class="pre">-K</span></code> asks for the
+<p>The tool will be installed as supervisord service. Option <code class="docutils literal"><span class="pre">-K</span></code> asks for the
 sudo-Passwort - only needed if daemontools must be installed.</p>
 <p>To test the service you can now post a sample request found in the file
 <a class="reference external" href="https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/sample_post.txt">sample_post.txt</a>
@@ -82,15 +82,6 @@ in the repo.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -d @sample_post.txt -H <span class="s1">&#39;Content-Type: application/json&#39;</span> localhost:8080/feinstaub/json2mqtt
 </pre></div>
 </div>
-</div>
-<div class="section" id="daemontools-services">
-<h2>daemontools services<a class="headerlink" href="#daemontools-services" title="Permalink to this headline">¶</a></h2>
-<p>The folder <code class="docutils literal"><span class="pre">services</span></code> contains services controlled by the
-<a class="reference external" href="https://cr.yp.to/daemontools.html">daemontools</a>
-(<a class="reference external" href="https://wiki.uberspace.de/system:daemontools">german documentation</a>).
-Navigate into this folder and run <code class="docutils literal"><span class="pre">svscan</span></code>. After this the json2mqtt-Service
-is launched and it is connected to a logging service afterwards. Logs are placed in
-<code class="docutils literal"><span class="pre">json2mqtt/log/main</span></code>.</p>
 </div>
 </div>
 <div class="section" id="api-doc">

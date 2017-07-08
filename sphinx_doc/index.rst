@@ -52,7 +52,7 @@ Look into the `playbook-deploy.yaml-file
 <https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/playbook-deploy.yml>`_
 to get more details about the deployment process.
 
-The tool will be installed as daemontools service. Option ``-K`` asks for the
+The tool will be installed as supervisord service. Option ``-K`` asks for the
 sudo-Passwort - only needed if daemontools must be installed.
 
 To test the service you can now post a sample request found in the file
@@ -63,16 +63,6 @@ in the repo.
 .. code-block:: bash
 
     curl -d @sample_post.txt -H 'Content-Type: application/json' localhost:8080/feinstaub/json2mqtt
-
-daemontools services
---------------------
-
-The folder ``services`` contains services controlled by the
-`daemontools <https://cr.yp.to/daemontools.html>`_
-(`german documentation <https://wiki.uberspace.de/system:daemontools>`_).
-Navigate into this folder and run ``svscan``. After this the json2mqtt-Service
-is launched and it is connected to a logging service afterwards. Logs are placed in
-``json2mqtt/log/main``.
 
 API-Doc
 =======

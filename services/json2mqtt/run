@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# -u unbuffered output
-exec ../../venv/bin/python -u ../../json2mqtt/run.py 2>&1
