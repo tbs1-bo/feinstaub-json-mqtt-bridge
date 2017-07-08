@@ -52,8 +52,12 @@ Look into the `playbook-deploy.yaml-file
 <https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/playbook-deploy.yml>`_
 to get more details about the deployment process.
 
-The tool will be installed as supervisord service. Option ``-K`` asks for the
-sudo-Passwort - only needed if daemontools must be installed.
+The tool will be installed as supervisord service. The configurtion script is
+`services/supervisor.conf
+<https://github.com/tbs1-bo/feinstaub-json-mqtt-bridge/blob/master/services/supervisor.conf>`_.
+
+Option ``-K`` asks for the sudo-Passwort - only needed if daemontools must be
+installed.
 
 To test the service you can now post a sample request found in the file
 `sample_post.txt
